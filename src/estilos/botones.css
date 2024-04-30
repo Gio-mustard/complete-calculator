@@ -1,0 +1,64 @@
+
+
+.boton{
+    background-color: var(--fondo-boton);
+    border: var(--border-radius-1) solid var(--border-boton);
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    transition: .3s;
+    font-size: 5vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:7vh;
+
+    
+}
+.boton.especial.accion{
+    background-color: var(--fondo-item-panel-seleccionado);
+    border-color: var(--border-item-panel-seleccionado);
+}
+.boton.especial.accion:hover{
+    border-color: var(--fondo-item-panel-seleccionado);
+    box-shadow: 0 5px 10px var(--border-item-panel-seleccionado);
+    transform: translateY(-2%);
+}
+.boton.especial.operacion{
+    background-color: var(--fondo-boton-operacion);
+    border-color: var(--border-boton-operacion);
+}
+.boton.especial.operacion:hover{
+    background-color: var(--border-boton-operacion);
+}
+.boton.especial.borrado{
+    background-color: var(--fondo-boton-borrado);
+    border-color: var(--border-boton-borrado);
+}
+.boton.especial.borrado:hover{
+    background-color: var(--border-boton-borrado);
+}
+.boton.especial.resultado{
+    background-color: var(--fondo-boton-resultado);
+    border-color: var(--border-boton-resultado);
+}
+.boton.especial.resultado:hover{
+    background-color: var(--border-boton-resultado);
+}
+.boton:hover{
+    background-color: var(--border-boton);
+}
+.boton:active,.boton.especial.borrado:active,.boton.especial.accion:active,.boton.especial.operacion:active{
+    transition: 0s;
+    border-color: var(--fondo-boton-active);
+    background-color: var(--fondo-boton-active);
+    transform: scale(.95);
+    box-shadow: none;
+}
+
+#panel-numerico footer{
+    background-color: var(--border-panel-operacion);
+    text-align: center;
+    border-radius: var(--border-radius-1);
+    grid-column: span 4;
+    width: 100%;
+    height: 100%;
+}

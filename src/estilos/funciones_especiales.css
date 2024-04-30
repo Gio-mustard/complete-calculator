@@ -1,0 +1,30 @@
+
+#boton-func-especiales{
+    background-color: var(--fondo-boton-operacion);
+    border-radius: var(--border-radius-1);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: var(--border-radius-0) solid var(--border-boton-operacion);
+    font-size: 2vh;
+    position: relative;
+
+}
+#boton-func-especiales::after{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("/public/iconos/corona.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--border-boton-operacion);
+    transition: .3s;
+}
+#boton-func-especiales:hover::after{
+    width: 100%;
+    
+    }
