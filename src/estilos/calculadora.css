@@ -1,8 +1,10 @@
 
 #calculadora-contenedor{
     display: grid;
+    max-height: 100vh;
+    overflow: hidden;
     grid-template-columns: 1fr;
-    grid-template-rows: 15vh 7vh 1fr;
+    grid-template-rows: 15vh 5vh 1fr;
     gap: var(--padding-1);
 }
 #panel-operacion{
