@@ -13,6 +13,11 @@
 
     
 }
+.boton.disabled{
+    background-color: #002b634d!important;
+    border-color: #002b634d !important;
+    opacity: .2;
+}
 .boton.especial.accion{
     background-color: var(--fondo-item-panel-seleccionado);
     border-color: var(--border-item-panel-seleccionado);

@@ -12,3 +12,14 @@ Aquí se maqueta la aplicación en un componente __App__ e importan los componen
 
 ### main.jsx
 Aquí se renderizar la __App__ del modulo App.jsx.
+
+
+## Paquete componentes
+Son los __react components__ de la aplicación que se utilizan para toda la aplicación, entre los componentes creados están...
+
+* [Boton](estilos/documentacion.md#panel-operación---section)
+    * Botones numéricos.
+    * Botones especiales.
+    * Etc.
+* [ItemPanel](estilos/documentacion.md#panel-operación---section)
+    > Son los números u operaciones del panel de operación

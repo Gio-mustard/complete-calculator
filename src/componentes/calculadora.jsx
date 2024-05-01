@@ -1,56 +1,43 @@
 import { useState,useEffect } from "react";
-const ItemPanel = ({type,children=0,selected=false})=>{
-    const [value,setValue] = useState(children);
-    const [tiene_accion,set_tiene_accion] = useState(false);
-    const [is_selected,set_selected] = useState(selected);
-    return(
-        <div className={`item-panel ${type} ${is_selected==true?"seleccionado":""}`}>
-            <span className={`accion ${tiene_accion==false?"vacio":''}`}>
-
-            </span>
-            <span className="value">
-                {value}
-            </span>
-
-        </div>
-    )
-}
-const Boton = ({children,type,src})=>{
-    return (
-        <button className={`boton ${type}`}
-        style={{backgroundImage:`url(${src})`}}
-        >
-            {children}
-        </button>
-    );
-}
-
+import { Boton } from "./botones";
+import { ItemPanel } from "./itemPanel";
+import { Controlador } from "./acciones/control_panel_operacion";
+const controllador = new Controlador(ItemPanel,null);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
-    const [elements,setElements] = useState([
-
-    ])
+    const [elements,setElements] = useState([])
     const [view_elements,setViewElements] = useState(elements);
-    const addElement = ()=>{
-        
-          const new_elements = [...elements];
-          new_elements.push(
-            <ItemPanel
-            key={elements.length+1}
-            type="numerico"
-            >
-                {elements.length+1}
-            </ItemPanel>
-          )
-          
-          setElements(new_elements)
-
-          
+    const addItem = (key,type,src,action)=>{
+        const dataBoton = {
+            type:type,
+            key:key,
+            src:src,
+            action:action
+        }
+        controllador.addItem(dataBoton,elements,setElements);
     }
+    const deleteLastItem = () =>{
+        controllador.deleteItem(elements,setElements);
+    }
+    useEffect(() =>{controllador.icons=icons},[icons]);
     useEffect(()=>{
-        const new_elements = [...elements];
-        setViewElements(new_elements.reverse())
+        const new_elements = elements.map((item,index)=>(
+            <ItemPanel
+            id={item.id}
+            key={index+1}
+            type={item.type}
+            src={item.src}
+            action={item.action}
+            >
+                {item.key}
+            </ItemPanel>
+    ));
+        new_elements.reverse()
+        setViewElements(new_elements);
 
     },[elements])
+    /*
+    ! Mira la documentación para ver el formato de los ItemsPanel
+    */ 
     return(
         <article id={id}>
             <section
@@ -59,111 +46,162 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 {view_elements}
             
             </section>
-            <button id="boton-func-especiales" onClick={addElement}>func. especiales</button>
+            <button id="boton-func-especiales"
+            
+            onClick={()=>{
+                controllador.getRawOperation(elements);
+            }}
+            >func. especiales</button>
             <section id="panel-numerico">
                 <Boton
                 type={'especial accion'}
-                src={icons.alCuadrado}
+                // src={icons.alCuadrado}
+                action="exp"
+                onClick={addItem}
+                disabled    
+
                 >
+                    <img src={icons.alCuadrado} className="temp-icon-especial-action"></img>
                     
                 </Boton>
                 <Boton
+                action="square"
+                disabled
                 type={'especial accion'}
-                src={icons.raizCuadrada}
+                // src={icons.raizCuadrada}
+                onClick={addItem}
+
                 >
-                    
+                    <img src={icons.raizCuadrada} className="temp-icon-especial-action"></img>
                 </Boton>
                 <Boton
                 type={'especial borrado'}
+                onClick={deleteLastItem}
+
                 src={icons.borrar}
                 >
                     
                 </Boton>
                 <Boton
                 type={'especial operacion'}
+                onClick={addItem}
+
                 >
                     {"÷"}
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
                 >
                     7
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     8
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     9
                 </Boton>
                 <Boton
                 type={'especial operacion'}
+                onClick={addItem}
+
                 >
                     x
                 </Boton>
                 {/* fila 3 */}
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     4
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     5
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     6
                 </Boton>
                 <Boton
                 type={'especial operacion'}
+                onClick={addItem}
+
                 >
                     -
                 </Boton>
                 {/* fila 4 */}
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     1
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     2
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     3
                 </Boton>
                 <Boton
                 type={'especial operacion'}
+                onClick={addItem}
+
                 >
                     +
                 </Boton>
                 {/* fila 5 */}
                 <Boton
                 type={'especial accion'}
+                onClick={addItem}
+
                 >
                     +/-
                 </Boton>
                 <Boton
                 type={'numerico'}
+                onClick={addItem}
+
                 >
                     0
                 </Boton>
                 <Boton
-                type={'numerico'}
+                type={'numericoPoint'}
+                onClick={addItem}
+
                 >
                     .
                 </Boton>
                 <Boton
                 type={'especial resultado'}
+                onClick={()=>{
+                    controllador.getResult(elements,setElements)
+                }}
+
                 >
                     =
                 </Boton>
