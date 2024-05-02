@@ -61,7 +61,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 type={'especial borradoCompleto'}
                 onClick={clear}
 
-                src={icons.borrar}
+                src={icons.limpiar}
                 ></Boton>
                 {/*Estos div solo estan 
                     para no alterar el posicionamiento de los botones, 
