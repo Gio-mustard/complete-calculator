@@ -25,7 +25,8 @@ function App() {
         borrar:imgs.iconoBorrar,
         corona:imgs.iconoCorona,
         alCuadrado:imgs.iconoAlCuadrado,
-        raizCuadrada:imgs.iconoRaizCuadrada
+        raizCuadrada:imgs.iconoRaizCuadrada,
+        limpiar:imgs.iconoLimpiar
       }}
       >
 
