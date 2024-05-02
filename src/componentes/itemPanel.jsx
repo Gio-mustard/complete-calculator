@@ -1,5 +1,5 @@
 import { useState } from "react";
-export const ItemPanel = ({type,children=0,selected=false,id,action=null})=>{
+export const ItemPanel = ({type,children=0,selected=false,id,action=null,src=undefined})=>{
     const [value,setValue] = useState(children);
     const [tiene_accion,set_tiene_accion] = useState(action!==null);
     const [is_selected,set_selected] = useState(selected);
@@ -8,7 +8,7 @@ export const ItemPanel = ({type,children=0,selected=false,id,action=null})=>{
         id={id}
         className={`item-panel ${type} ${is_selected==true?"seleccionado":""}`}>
             <span className={`accion ${tiene_accion==false?"vacio":''}`}>
-
+                {src!==undefined?src:''}
             </span>
             <span className="value">
                 {value}

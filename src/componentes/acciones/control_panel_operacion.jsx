@@ -14,6 +14,18 @@ class Controlador{
        const items = [...document.getElementsByClassName("item-panel")];
        return items.length === 0 ? null:items[items.length-1]
     }
+    #insertAction(newElements,setElements,lastElement,dataBoton){
+        let newAction = null
+        let src = undefined;
+        if (lastElement.action !== dataBoton.action){
+            newAction = dataBoton.action;
+            src = dataBoton.key;
+        }
+        lastElement.action = newAction;
+        lastElement.src = src;
+        newElements[newElements.length-1] = lastElement;
+        this.#forceRenderPanel(newElements,setElements);
+    }
     addItem(dataBoton,elements,setElements){
         
         const {type,src,key,action} = dataBoton;
@@ -21,6 +33,20 @@ class Controlador{
         const newElements = [...elements]
 
         const lastElement = newElements.length===0?{type:undefined}:newElements[newElements.length - 1];
+        if (
+            key != "+/-"
+            &&
+            lastElement.type==="numerico"
+            && 
+            split_type.includes("accion")
+
+        ){
+            this.#insertAction(newElements,setElements,lastElement,dataBoton)
+            return
+        }
+        if (split_type.includes("accion") && key != "+/-"){
+            return
+        }
         if (lastElement.type==="numerico" && (split_type.includes('numerico')||key==="+/-")){ 
             let new_key = ''
             if (key==="+/-"){
@@ -91,6 +117,13 @@ class Controlador{
         const items = [...elements];
         items.map(e=>{
             let value = e.key;
+            if (e.action === 'exp'){
+                value = `(${value}**2)`
+            }
+            else if (e.action === 'square'){
+                value = `(Math.sqrt(${value}))`
+
+            }
             operacion += value
 
 

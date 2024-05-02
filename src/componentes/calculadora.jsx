@@ -78,7 +78,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 // src={icons.alCuadrado}
                 action="exp"
                 onClick={addItem}
-                disabled    
+                   
 
                 >
                     <img src={icons.alCuadrado} className="temp-icon-especial-action"></img>
@@ -86,7 +86,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 </Boton>
                 <Boton
                 action="square"
-                disabled
+                
                 type={'especial accion'}
                 // src={icons.raizCuadrada}
                 onClick={addItem}
