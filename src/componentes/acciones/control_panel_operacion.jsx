@@ -81,6 +81,9 @@ class Controlador{
         setElements(newElements);
             
     }
+    clearPanel(setElements){
+        setElements([]);
+    }
     getRawOperation(elements){
         let operacion = ""
         const items = [...elements];

@@ -18,6 +18,9 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const deleteLastItem = () =>{
         controllador.deleteItem(elements,setElements);
     }
+    const clear = () =>{
+        controllador.clearPanel(setElements);
+    };
     useEffect(() =>{controllador.icons=icons},[icons]);
     useEffect(()=>{
         const new_elements = elements.map((item,index)=>(
@@ -53,6 +56,23 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
             }}
             >func. especiales</button>
             <section id="panel-numerico">
+                {/* fila 1 */}
+                <Boton
+                type={'especial borradoCompleto'}
+                onClick={clear}
+
+                src={icons.borrar}
+                ></Boton>
+                {/*Estos div solo estan 
+                    para no alterar el posicionamiento de los botones, 
+                    cuando se agreguen mas botones
+                    se hará aquí*/}
+
+               <div></div> 
+               <div></div>
+               <div></div>
+
+                {/* fila 2 */}
                 <Boton
                 type={'especial accion'}
                 // src={icons.alCuadrado}
@@ -205,9 +225,9 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 >
                     =
                 </Boton>
-                <footer>
+                {/* <footer>
                     <h2>Morquecho Soto Sergio Manuel</h2>
-                </footer>
+                </footer> */}
             </section>
         </article>
     )
