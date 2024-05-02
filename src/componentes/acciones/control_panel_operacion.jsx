@@ -5,6 +5,7 @@ class Controlador{
         this.currentIndex=0;
         this.Item = Item;
         this.icons = icons;
+        this.timeToRender = 50 //miliseconds
     }
     findLastItemInPanel(){
         /*
@@ -37,42 +38,43 @@ class Controlador{
             }
             lastElement.key = new_key
             newElements[newElements.length-1]=lastElement;
-           setElements([])
-            setTimeout(()=>{
-                setElements(newElements);
-            },50)
+            this.#forceRenderPanel(newElements,setElements);
+            return
         }
-        else{
+        newElements.push(
+            {
+            key:key,
+            id:`item-panel-${newElements.length+1}`,
+            action:action,
+            type:type,
+            src:src,
+            onclick:null // el evento se agrega al maquetar en el //! panel numérico.
+        }
+    );
+    setElements(newElements);
 
-        
-
-            newElements.push(
-                {
-                key:key,
-                id:`item-panel-${newElements.length+1}`,
-                action:action,
-                type:type,
-                src:src,
-                onclick:null // el evento se agrega al maquetar en el //! panel numérico.
-            }
-        );
-
-        
-        setElements(newElements);
+    
     }
+    #forceRenderPanel(elements,setElements){
+        this.clearPanel(setElements);
+        setTimeout(()=>{
+            setElements(elements);
+        },this.timeToRender);
     }
     deleteItem(elements,setElements){
         if (elements.length===0) return
         const _elements = [...elements];
         const lastElement = _elements.length===0?{type:undefined}:_elements[_elements.length - 1];
 
-        if (lastElement.type==="numerico"){
-            const lastInPanelItemValue = document.getElementsByClassName("value")[0];
-            if (lastInPanelItemValue.textContent.length>1){
-
-                lastInPanelItemValue.textContent  = lastInPanelItemValue.textContent.slice(0,lastInPanelItemValue.textContent.length-1);
-                return
-            }
+        if (
+            lastElement.type==="numerico" 
+            &&
+            lastElement.key.length>1
+        ){
+           lastElement.key = lastElement.key.slice(0,lastElement.key.length-1)
+           _elements[elements.length-1]=lastElement
+           this.#forceRenderPanel(_elements,setElements)
+           return
             
          }
          
@@ -98,11 +100,10 @@ class Controlador{
     }
     getResult(elements,setElements){
         const result = this.getRawOperation(elements)
-        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {
-                key:key,
+                key:`${key}`,
                 id:`item-panel-${elements.length+1}`,
                 action:null,
                 type:"numerico",
@@ -110,11 +111,7 @@ class Controlador{
                 onclick:null // el evento se agrega al maquetar en el //! panel numérico.
             },
         ];
-        setElements([])
-        setTimeout(()=>{
-            setElements(newElements);
-
-        },100)
+        this.#forceRenderPanel(newElements,setElements)
 
     }
 }
