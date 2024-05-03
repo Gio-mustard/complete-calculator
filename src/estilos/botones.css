@@ -52,11 +52,11 @@
     box-shadow: 0 5px 10px var(--border-item-panel-seleccionado);
     transform: translateY(-2%);
 }
-.boton.especial.operacion{
+.boton.especial.operacion,.boton.especial.segmentacion{
     background-color: var(--fondo-boton-operacion);
     border-color: var(--border-boton-operacion);
 }
-.boton.especial.operacion:hover{
+.boton.especial.operacion:hover,.boton.especial.segmentacion:hover{
     background-color: var(--border-boton-operacion);
 }
 .boton.especial.borrado{

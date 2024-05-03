@@ -16,19 +16,28 @@ class Controlador{
        return items.length === 0 ? null:items[items.length-1]
     }
     #insertAction(newElements,setElements,lastElement,dataBoton){
-        let newAction = null
-        let src = undefined;
-        if (lastElement.action !== dataBoton.action){
-            newAction = dataBoton.action;
-            src = dataBoton.key;
+        const reversedElements  = [...newElements].reverse();
+        for (let elementToInsertAction of reversedElements){
+            if (elementToInsertAction.type !== "numerico")continue
+            
+            let newAction = null
+            let src = undefined;
+            if (elementToInsertAction.action !== dataBoton.action){
+                newAction = dataBoton.action;
+                src = dataBoton.key;
         }
-        lastElement.action = newAction;
-        lastElement.src = src;
-        this.#replaceLastItem(newElements,lastElement,setElements);
+        elementToInsertAction.action = newAction;
+        elementToInsertAction.src = src;
+        const elementToInsertActionIndex = newElements.findIndex((item)=>(
+            item.id === elementToInsertAction.id
+        ))
+        this.#replaceLastItem(newElements,elementToInsertAction,setElements,elementToInsertActionIndex);
+        break;
     }
-    #replaceLastItem(elements,newLastItem,setElements) {
+    }
+    #replaceLastItem(elements,newLastItem,setElements,index=null) {
         const newElements = [...elements];
-        newElements[newElements.length-1]=newLastItem;
+        newElements[index===null?newElements.length-1:index]=newLastItem;
         this.#forceRenderPanel(newElements,setElements);
     }
     addItem(dataBoton,elements,setElements){
@@ -41,7 +50,8 @@ class Controlador{
         if (
             key != "+/-"
             &&
-            lastElement.type==="numerico"
+            // lastElement.type==="numerico"
+            true
             && 
             split_type.includes("accion")
 
@@ -71,7 +81,6 @@ class Controlador{
             this.#replaceLastItem(newElements,lastElement,setElements);
             return
         }
-        console.log(lastElement)
         if (lastElement.type === "especial operacion" && split_type.includes("operacion")){
             lastElement.key = key
             this.#replaceLastItem(newElements,lastElement,setElements);
@@ -155,7 +164,6 @@ class Controlador{
     }
     getResult(elements,setElements){
         const result = this.getRawOperation(elements)
-        console.log(result);
         const key = parseFloat(eval(result))
         const newElements = [
             {

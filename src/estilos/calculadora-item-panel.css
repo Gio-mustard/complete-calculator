@@ -70,7 +70,7 @@
     display: none;
     opacity: 0;
 }
-.item-panel.numericoPoint > .accion{
+.item-panel.numericoPoint > .accion,.item-panel.segmentacion > .accion{
     display: none;
 }
 .item-panel.operacion > .accion{
@@ -91,6 +91,14 @@
     max-height: 3vh;
     justify-content: center;
     align-items: center;
+}
+.item-panel.segmentacion{
+    padding: 0 .5vh;
+    background-color: var(--fondo-boton);
+}
+.item-panel.segmentacion > .value{
+    font-size: 5vh;
+    height: 100%;
 }
 /* ! TEMPORAL */
 .temp-icon-especial-action{
