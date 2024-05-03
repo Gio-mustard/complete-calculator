@@ -10,7 +10,7 @@
     width:auto;
     position: relative;
     border: var(--border-radius-0) solid transparent;
-    
+    direction: ltr;
 }
 .item-panel.is-negative::after{
     content: "-";
@@ -72,6 +72,25 @@
 }
 .item-panel.numericoPoint > .accion{
     display: none;
+}
+.item-panel.operacion > .accion{
+    display: none;
+}
+.item-panel.operacion{
+    height: fit-content;
+    align-self: center;
+    display: flex;
+    width: 3vh;
+    padding: 0;
+}
+.item-panel.operacion > .value{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    font-size: 4vh;
+    max-height: 3vh;
+    justify-content: center;
+    align-items: center;
 }
 /* ! TEMPORAL */
 .temp-icon-especial-action{

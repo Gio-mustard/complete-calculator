@@ -71,9 +71,16 @@
     border-color:  #5fbefdaa;
     border-radius: 10vh;
 }
+.boton.especial.borradoCompleto > img{
+    object-fit: contain;
+    width: 70%;
+    transition: .2s;
+}
 .boton.especial.borradoCompleto:hover{
-    transform: rotateZ(30deg);
     background-color: #aef1ff;
+}
+.boton.especial.borradoCompleto > img:hover{
+    transform: rotateZ(30deg);
 }
 .boton.especial.resultado{
     background-color: var(--fondo-boton-resultado);
