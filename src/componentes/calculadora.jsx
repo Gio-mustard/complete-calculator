@@ -10,10 +10,10 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
     const [lastElementsInHistorial,setLastElementsInHistorial] = useState(localStorageManager.getHistory())
     const [view_elements,setViewElements] = useState(elements);
-    // const [iconsActionForHistory,_]=useState({
-    //     [c.actions.exponente_al.cuadrado]:<img src={icons.alCuadrado} className="temp-icon-especial-action"></img>,
-    //     [c.actions.raiz.cuadrada]:<img src={icons.raizCuadrada} className="temp-icon-especial-action"></img>,
-    // })
+    const [iconsActionForHistory,_]=useState({
+        [c.actions.exponente_al.cuadrado]:<img src={icons.alCuadrado} className="temp-icon-especial-action"></img>,
+        [c.actions.raiz.cuadrada]:<img src={icons.raizCuadrada} className="temp-icon-especial-action"></img>,
+    })
     const addItem = (key,type,src,action)=>{
         const dataBoton = {
             type:type,
@@ -71,7 +71,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
             id={item.id}
             key={index+1}
             type={item.type}
-            // src={iconsActionForHistory[item.action]}
+            src={iconsActionForHistory[item.action]}
             action={item.action}
             >
                 {item.key}

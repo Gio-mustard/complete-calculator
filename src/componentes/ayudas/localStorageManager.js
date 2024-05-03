@@ -14,7 +14,7 @@ export class LocalStorage{
         localStorage.setItem(nameHistory, JSON.stringify(this.history));
     }
     getHistory(){
-        return this.history[this.history.length-1];
+        return this.history.length>1 ?this.history[this.history.length-1]:[];
     }
     clearHistory(){
         localStorage.setItem(nameHistory, JSON.stringify([]));
