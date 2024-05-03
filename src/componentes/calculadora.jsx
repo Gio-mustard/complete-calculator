@@ -3,10 +3,12 @@ import { Boton } from "./botones";
 import { ItemPanel } from "./itemPanel";
 import { Controlador } from "./acciones/control_panel_operacion";
 import * as c from "./constantes";
-const controllador = new Controlador(ItemPanel,null,c.actions);
+import { LocalStorage } from "./ayudas/localStorageManager";
+const localStorageManager = new LocalStorage();
+const controllador = new Controlador(ItemPanel,null,c.actions,localStorageManager);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
-    const [lastElementsInHistorial,setLastElementsInHistorial] = useState([])
+    const [lastElementsInHistorial,setLastElementsInHistorial] = useState(localStorageManager.getHistory())
     const [view_elements,setViewElements] = useState(elements);
     const [iconsActionForHistory,_]=useState({
         [c.actions.exponente_al.cuadrado]:<img src={icons.alCuadrado} className="temp-icon-especial-action"></img>,
@@ -64,7 +66,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <img src={icons.historial}/>
             </button>
 {
-                lastElementsInHistorial.map((item,index)=>(
+                [...lastElementsInHistorial].reverse().map((item,index)=>(
                     <ItemPanel
             id={item.id}
             key={index+1}
