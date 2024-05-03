@@ -63,8 +63,10 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 type={'especial borradoCompleto'}
                 onClick={clear}
 
-                src={icons.limpiar}
-                ></Boton>
+                >
+                    <img src={icons.limpiar} className="temp-icon-especial-action"></img>
+
+                </Boton>
                 {/*Estos div solo estan 
                     para no alterar el posicionamiento de los botones, 
                     cuando se agreguen mas botones
@@ -212,7 +214,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                     0
                 </Boton>
                 <Boton
-                type={'numericoPoint'}
+                type={'numerico'}
                 onClick={addItem}
 
                 >

@@ -24,7 +24,11 @@ class Controlador{
         }
         lastElement.action = newAction;
         lastElement.src = src;
-        newElements[newElements.length-1] = lastElement;
+        this.#replaceLastItem(newElements,lastElement,setElements);
+    }
+    #replaceLastItem(elements,newLastItem,setElements) {
+        const newElements = [...elements];
+        newElements[newElements.length-1]=newLastItem;
         this.#forceRenderPanel(newElements,setElements);
     }
     addItem(dataBoton,elements,setElements){
@@ -64,8 +68,16 @@ class Controlador{
                 new_key = `${lastElement.key}${key}`
             }
             lastElement.key = new_key
-            newElements[newElements.length-1]=lastElement;
-            this.#forceRenderPanel(newElements,setElements);
+            this.#replaceLastItem(newElements,lastElement,setElements);
+            return
+        }
+        console.log(lastElement)
+        if (lastElement.type === "especial operacion" && split_type.includes("operacion")){
+            lastElement.key = key
+            this.#replaceLastItem(newElements,lastElement,setElements);
+            return
+        }
+        if (lastElement.type !== "numerico" && key==="+/-"){
             return
         }
         newElements.push(
@@ -143,7 +155,6 @@ class Controlador{
     }
     getResult(elements,setElements){
         const result = this.getRawOperation(elements)
-        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {
