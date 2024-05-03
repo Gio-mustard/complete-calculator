@@ -3,7 +3,6 @@ import { Boton } from "./botones";
 import { ItemPanel } from "./itemPanel";
 import { Controlador } from "./acciones/control_panel_operacion";
 import * as c from "./constantes";
-
 const controllador = new Controlador(ItemPanel,null,c.actions);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
@@ -46,17 +45,40 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     return(
         <article id={id}>
             <section
+            id="panel-historial"
+            
+            >
+                <button
+                id="panel-historial-abrir"
+                className="disabled"
+                disabled
+                onClick={()=>{
+
+                }}
+            >
+                <img src={icons.historial}/>
+            </button>
+{
+                [].map((item,index)=>(
+                    <ItemPanel
+            id={item.id}
+            key={index+1}
+            type={item.type}
+            src={item.src}
+            action={item.action}
+            >
+                {item.key}
+            </ItemPanel>
+                ))
+            }
+            </section>
+            <section
             id="panel-operacion"
             >
                 {view_elements}
             
             </section>
-            <button id="boton-func-especiales"
             
-            onClick={()=>{
-                controllador.getRawOperation(elements);
-            }}
-            >func. especiales</button>
             <section id="panel-numerico">
                 {/* fila 1 */}
                 <Boton
@@ -72,7 +94,12 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                     cuando se agreguen mas botones
                     se hará aquí*/}
 
-<div></div>
+<button id="boton-func-especiales"
+            
+            onClick={()=>{
+                controllador.getRawOperation(elements);
+            }}
+            >func. especiales</button>
                <Boton
                type={'especial segmentacion'}
                onClick={addItem}

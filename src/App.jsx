@@ -4,6 +4,7 @@ import "./estilos/calculadora.css"
 import "./estilos/calculadora-item-panel.css"
 import "./estilos/botones.css"
 import "./estilos/funciones_especiales.css"
+import "./estilos/panel_historial.css"
 
 
 
@@ -26,7 +27,8 @@ function App() {
         corona:imgs.iconoCorona,
         alCuadrado:imgs.iconoAlCuadrado,
         raizCuadrada:imgs.iconoRaizCuadrada,
-        limpiar:imgs.iconoLimpiar
+        limpiar:imgs.iconoLimpiar,
+        historial:imgs.iconoHistorial
       }}
       >
 

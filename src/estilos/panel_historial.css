@@ -1,0 +1,76 @@
+:root{
+    --fondo:#DFD0B8;
+    --padding-0:.5vh;
+    --padding-1:1vh;
+    --desktop-width-section:600px;
+    --background-aside:#50494036;
+    --border-radius-0:.5vh;
+    --border-radius-1:1vh;
+    --dbg:rgba(135, 207, 235, 0.326);
+    --white-text-color:#fff6f0;
+    --border-panel-operacion:#948979;
+    --fondo-boton:#948979;
+    --border-boton:#7E7567;
+    --fondo-boton-active:#1534485f;
+    --fondo-boton-operacion:#3C5B6F;
+    --border-boton-operacion:#314A58;
+    --fondo-boton-borrado:#FD5F5F;
+    --border-boton-borrado:#D33838;
+    --fondo-boton-resultado:#159b4b6f;
+    --border-boton-resultado:#0eb60eb3;
+    --fondo-panel-operacion:#B4AFA0;
+    --fondo-item-panel:#92958D;
+    --fondo-item-panel-accion:#D9D9D9;
+    --fondo-item-panel-seleccionado:#E3A953;
+    --border-item-panel-seleccionado:#C19958;
+}
+
+#panel-historial{
+    max-width: 100%;
+    display: flex;
+    gap: .5%;
+    direction: rtl;
+    padding: 0 1% ;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+}
+#panel-historial::-webkit-scrollbar {
+    width: 1.5vw; 
+    height: .3vh;
+}
+
+#panel-historial > .item-panel{
+    transform: scale(.8);
+    height: 80%;
+    align-self: self-end;
+}
+#panel-historial > .item-panel > .value{
+    font-size: 3vh;
+}
+#panel-historial > .item-panel > .accion{
+    width: 2vh;
+    height: 2vh;
+    padding: 0;
+    border: 0;
+    transform: translateY(-50%);
+}
+#panel-historial-abrir{/*Es el boton para abrir el historial completo*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3vh;
+    background-color: var(--fondo-boton-operacion);
+    border: var(--border-radius-0) solid var(--border-boton-operacion);
+    border-radius: var(--border-radius-0);
+}
+#panel-historial-abrir > img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+#panel-historial-abrir.disabled{
+    background-color: #bbb;
+    border-color: #aaa;
+}

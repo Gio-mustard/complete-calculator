@@ -163,6 +163,7 @@ class Controlador{
         return(operacion.replaceAll('x','*').replaceAll("÷","/"))
     }
     getResult(elements,setElements){
+        console.log(elements)
         const result = this.getRawOperation(elements)
         console.log(result)
         const key = parseFloat(eval(result))

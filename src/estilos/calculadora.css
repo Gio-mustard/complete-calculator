@@ -4,7 +4,7 @@
     max-height: 100vh;
     overflow: hidden;
     grid-template-columns: 1fr;
-    grid-template-rows: 13vh 5vh 1fr;
+    grid-template-rows: 5vh 13vh  1fr;
     gap: var(--padding-1);
 }
 #panel-operacion{
