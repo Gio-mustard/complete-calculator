@@ -1,12 +1,11 @@
-
-
 class Controlador{
-    constructor(Item,icons,constants){
+    constructor(Item,icons,constants,localStorageManager){
         this.currentIndex=0;
         this.Item = Item;
         this.icons = icons;
         this.timeToRender = 50 //miliseconds
         this.c = constants
+        this.localStorageManager = localStorageManager
     }
     findLastItemInPanel(){
         /*
@@ -175,7 +174,11 @@ class Controlador{
                 onclick:null // el evento se agrega al maquetar en el //! panel numérico.
             },
         ];
-        this.#forceRenderPanel([...elements].reverse(),setLastElementsInHistorial)
+        this.localStorageManager.addToHistory([...elements].map((item)=>{
+            item.src = null;
+            return item
+        }));
+        this.#forceRenderPanel(elements,setLastElementsInHistorial)
         this.#forceRenderPanel(newElements,setElements)
 
     }
