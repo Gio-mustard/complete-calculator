@@ -6,6 +6,7 @@ import * as c from "./constantes";
 const controllador = new Controlador(ItemPanel,null,c.actions);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
+    const [lastElementsInHistorial,setLastElementsInHistorial] = useState([])
     const [view_elements,setViewElements] = useState(elements);
     const addItem = (key,type,src,action)=>{
         const dataBoton = {
@@ -59,7 +60,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <img src={icons.historial}/>
             </button>
 {
-                [].map((item,index)=>(
+                lastElementsInHistorial.map((item,index)=>(
                     <ItemPanel
             id={item.id}
             key={index+1}
@@ -260,7 +261,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <Boton
                 type={'especial resultado'}
                 onClick={()=>{
-                    controllador.getResult(elements,setElements)
+                    controllador.getResult(elements,setElements,setLastElementsInHistorial)
                 }}
 
                 >

@@ -162,10 +162,8 @@ class Controlador{
         
         return(operacion.replaceAll('x','*').replaceAll("÷","/"))
     }
-    getResult(elements,setElements){
-        console.log(elements)
+    getResult(elements,setElements,setLastElementsInHistorial){
         const result = this.getRawOperation(elements)
-        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {
@@ -177,6 +175,7 @@ class Controlador{
                 onclick:null // el evento se agrega al maquetar en el //! panel numérico.
             },
         ];
+        this.#forceRenderPanel([...elements].reverse(),setLastElementsInHistorial)
         this.#forceRenderPanel(newElements,setElements)
 
     }
