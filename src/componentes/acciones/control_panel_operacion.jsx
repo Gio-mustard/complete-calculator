@@ -160,10 +160,11 @@ class Controlador{
 
         })
         
-        return(operacion.replace('x','*').replace("÷","/").replace('exp',"2**"))
+        return(operacion.replaceAll('x','*').replaceAll("÷","/"))
     }
     getResult(elements,setElements){
         const result = this.getRawOperation(elements)
+        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {
