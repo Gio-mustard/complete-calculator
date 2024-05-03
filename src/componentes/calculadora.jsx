@@ -72,8 +72,18 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                     cuando se agreguen mas botones
                     se hará aquí*/}
 
-               <div></div> 
-               <div></div>
+               <Boton
+               type={'especial segmentacion'}
+               onClick={addItem}
+               >
+                {"("}
+               </Boton>
+               <Boton
+               type={'especial segmentacion'}
+               onClick={addItem}
+               >
+                {")"}
+               </Boton>
                <div></div>
 
                 {/* fila 2 */}
