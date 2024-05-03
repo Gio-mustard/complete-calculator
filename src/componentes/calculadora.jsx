@@ -3,12 +3,10 @@ import { Boton } from "./botones";
 import { ItemPanel } from "./itemPanel";
 import { Controlador } from "./acciones/control_panel_operacion";
 import * as c from "./constantes";
-import { LocalStorage } from "./ayudas/localStorageManager";
-const localStorageManager = new LocalStorage();
-const controllador = new Controlador(ItemPanel,null,c.actions,localStorageManager);
+const controllador = new Controlador(ItemPanel,null,c.actions);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
-    const [lastElementsInHistorial,setLastElementsInHistorial] = useState(localStorageManager.getHistory())
+    const [lastElementsInHistorial,setLastElementsInHistorial] = useState([])
     const [view_elements,setViewElements] = useState(elements);
     const [iconsActionForHistory,_]=useState({
         [c.actions.exponente_al.cuadrado]:<img src={icons.alCuadrado} className="temp-icon-especial-action"></img>,
@@ -66,7 +64,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <img src={icons.historial}/>
             </button>
 {
-                [...lastElementsInHistorial].reverse().map((item,index)=>(
+                lastElementsInHistorial.map((item,index)=>(
                     <ItemPanel
             id={item.id}
             key={index+1}
@@ -267,7 +265,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <Boton
                 type={'especial resultado'}
                 onClick={()=>{
-                    controllador.getResult(elements,setElements,setLastElementsInHistorial)
+                    controllador.getResult(elements,setElements)
                 }}
 
                 >

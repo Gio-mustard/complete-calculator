@@ -161,8 +161,10 @@ class Controlador{
         
         return(operacion.replaceAll('x','*').replaceAll("÷","/"))
     }
-    getResult(elements,setElements,setLastElementsInHistorial){
+    getResult(elements,setElements){
+        console.log(elements)
         const result = this.getRawOperation(elements)
+        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {
@@ -174,11 +176,7 @@ class Controlador{
                 onclick:null // el evento se agrega al maquetar en el //! panel numérico.
             },
         ];
-        this.localStorageManager.addToHistory([...elements].map((item)=>{
-            item.src = null;
-            return item
-        }));
-        this.#forceRenderPanel(elements,setLastElementsInHistorial)
+        this.#forceRenderPanel([...elements].reverse())
         this.#forceRenderPanel(newElements,setElements)
 
     }
