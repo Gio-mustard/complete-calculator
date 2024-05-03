@@ -1,11 +1,12 @@
 
 
 class Controlador{
-    constructor(Item,icons){
+    constructor(Item,icons,constants){
         this.currentIndex=0;
         this.Item = Item;
         this.icons = icons;
         this.timeToRender = 50 //miliseconds
+        this.c = constants
     }
     findLastItemInPanel(){
         /*
@@ -117,12 +118,21 @@ class Controlador{
         const items = [...elements];
         items.map(e=>{
             let value = e.key;
-            if (e.action === 'exp'){
-                value = `(${value}**2)`
+            if (
+                e.action === this.c.exponente_al.cuadrado
+                ||
+                e.action === this.c.exponente_al.cubo
+            ){
+                const exponente = parseInt(e.action.split(" ")[1]);
+                value = `(Math.abs(${value})**${exponente})`;
             }
-            else if (e.action === 'square'){
-                value = `(Math.sqrt(${value}))`
-
+            else if (
+                e.action === this.c.raiz.cuadrada 
+                ||
+                e.action === this.c.raiz.cubica
+            ){
+                const indice = parseInt(e.action.split(" ")[1]);
+                value = `((Math.abs(${value})**(1/${indice})))`;
             }
             operacion += value
 
@@ -133,6 +143,7 @@ class Controlador{
     }
     getResult(elements,setElements){
         const result = this.getRawOperation(elements)
+        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {

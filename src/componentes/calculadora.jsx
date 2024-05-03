@@ -2,7 +2,9 @@ import { useState,useEffect } from "react";
 import { Boton } from "./botones";
 import { ItemPanel } from "./itemPanel";
 import { Controlador } from "./acciones/control_panel_operacion";
-const controllador = new Controlador(ItemPanel,null);
+import * as c from "./constantes";
+
+const controllador = new Controlador(ItemPanel,null,c.actions);
 export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
     const [elements,setElements] = useState([])
     const [view_elements,setViewElements] = useState(elements);
@@ -76,7 +78,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 <Boton
                 type={'especial accion'}
                 // src={icons.alCuadrado}
-                action="exp"
+                action={c.actions.exponente_al.cuadrado}
                 onClick={addItem}
                    
 
@@ -85,7 +87,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                     
                 </Boton>
                 <Boton
-                action="square"
+                action={c.actions.raiz.cuadrada}
                 
                 type={'especial accion'}
                 // src={icons.raizCuadrada}
