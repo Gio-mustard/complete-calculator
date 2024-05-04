@@ -28,3 +28,6 @@ const itemPanel = {
 const [elements,setElements] =useState([itemPanel])
 
 ```
+
+# historial
+Cuando se realiza una operación matemática esta se guarda en el __local storge__ habiendo una clave la cual guarda un array donde cada elemento es una operación que se realizo, cabe mencionar que no se guarda el resultado en el historial, solo se guarda el algoritmo.
