@@ -5,8 +5,8 @@ import "./estilos/calculadora-item-panel.css"
 import "./estilos/botones.css"
 import "./estilos/funciones_especiales.css"
 import "./estilos/panel_historial.css"
-
-
+import { Pizarron } from './componentes/pizarron';
+import "./estilos/pizarron.css"
 
 import * as imgs from './images';
 
@@ -16,8 +16,7 @@ function App() {
     <>
       <aside>
         
-        <a href="#calculadora-contenedor" className="smooth-scroll">ir a la calculadora</a>
-        
+        <Pizarron/>
         </aside>
      
       <Calculadora
