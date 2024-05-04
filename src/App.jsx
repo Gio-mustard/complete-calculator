@@ -11,11 +11,21 @@ import "./estilos/pizarron.css"
 import * as imgs from './images';
 
 function App() {
-  
   return (
     <>
       <aside>
-        
+        <button id='block-scroll' onClick={()=>{
+          const root = document.getElementById('body')
+          console.log(root)
+          if (root.style.overflow === 'hidden'){
+            root.style.overflow = 'scroll';
+          }
+          else{
+            root.style.overflow = 'hidden';
+          }
+        }}>
+          block
+        </button>
         <Pizarron/>
         </aside>
      

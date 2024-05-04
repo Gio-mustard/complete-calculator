@@ -59,3 +59,11 @@ article{
     width: min(100%,var(--desktop-width-section));
     height: 98vh;
 }
+#block-scroll{
+  position: absolute;
+  width: 5vh;
+  height: 5vh;
+  background-color: skyblue;
+  z-index: 10;
+  cursor: pointer;
+}
