@@ -15,7 +15,7 @@ const Pincel = ({ children, currentColor=undefined, color=null, setColor=null ,i
         </button>
     )
 }
-export function Pizarron() {
+export function Pizarron({icons}) {
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
@@ -111,14 +111,14 @@ export function Pizarron() {
     return (
         <div id='pizarron-container'>
             <section id='pizarron-pinceles'>
-                <img src="/public/iconos/pato.png" alt="ir a la calculadora" id='link-ir-calculadora'/>
+                <img src={icons.pato} alt="ir a la calculadora" id='link-ir-calculadora'/>
                 <h3 id='instruccion-pizarron'>usa esto para dibujar</h3>
                 <div id='pinceles'>
                 <Pincel
                 onClick={saveCanvas}
                     isErase={true}
                 >
-                    <img src='/public/iconos/guardar.png'/>
+                    <img src={icons.guardar}/>
                 </Pincel>
                 <Pincel
                     currentColor={color}
@@ -147,7 +147,7 @@ export function Pizarron() {
                     setColor={setColor}
                     isErase={true}
                 >
-                    <img src='/public/iconos/borrador.png'/>
+                    <img src={icons.borrador}/>
                 </Pincel>
                     </div>
             </section>

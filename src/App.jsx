@@ -17,16 +17,20 @@ function App() {
         <button id='block-scroll' onClick={()=>{
           const root = document.getElementById('body')
           console.log(root)
-          if (root.style.overflow === 'hidden'){
-            root.style.overflow = 'scroll';
+          if (root.style.overflowY === 'hidden'){
+            root.style.overflowY = 'scroll';
           }
           else{
-            root.style.overflow = 'hidden';
+            root.style.overflowY = 'hidden';
           }
         }}>
           block
         </button>
-        <Pizarron/>
+        <Pizarron icons={{
+          borrador:imgs.iconoBorrador,
+          guardar:imgs.iconoGuardar,
+          pato:imgs.iconoPato
+        }}/>
         </aside>
      
       <Calculadora

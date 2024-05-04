@@ -60,10 +60,13 @@ article{
     height: 98vh;
 }
 #block-scroll{
-  position: absolute;
+  position: fixed;
   width: 5vh;
+  left: 1%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.39);
   height: 5vh;
   background-color: skyblue;
   z-index: 10;
   cursor: pointer;
+  border-color: skyblue;
 }
