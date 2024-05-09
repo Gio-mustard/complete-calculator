@@ -46,6 +46,7 @@ class Controlador{
         const newElements = [...elements]
 
         const lastElement = newElements.length===0?{type:undefined}:newElements[newElements.length - 1];
+        if (type==="especial operacion" && elements.length===0)return
         if (
             key != "+/-"
             &&
@@ -162,9 +163,8 @@ class Controlador{
         return(operacion.replaceAll('x','*').replaceAll("÷","/"))
     }
     getResult(elements,setElements,setLastElementsInHistorial){
-        console.log(elements)
+        if (elements.length===0)return
         const result = this.getRawOperation(elements)
-        console.log(result)
         const key = parseFloat(eval(result))
         const newElements = [
             {

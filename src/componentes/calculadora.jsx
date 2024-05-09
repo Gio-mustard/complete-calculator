@@ -14,6 +14,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
         [c.actions.exponente_al.cuadrado]:<img src={icons.alCuadrado} className="temp-icon-especial-action"></img>,
         [c.actions.raiz.cuadrada]:<img src={icons.raizCuadrada} className="temp-icon-especial-action"></img>,
     })
+    const [resultDisbled,set_result_disbled] = useState(true);
     const addItem = (key,type,src,action)=>{
         const dataBoton = {
             type:type,
@@ -45,6 +46,10 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
         new_elements.reverse()
         setViewElements(new_elements);
 
+    },[elements])
+    useEffect(()=>{
+        set_result_disbled(!(elements.length>0));
+        
     },[elements])
     /*
     ! Mira la documentación para ver el formato de los ItemsPanel
@@ -96,10 +101,6 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                     <img src={icons.limpiar} className="temp-icon-especial-action"></img>
 
                 </Boton>
-                {/*Estos div solo estan 
-                    para no alterar el posicionamiento de los botones, 
-                    cuando se agreguen mas botones
-                    se hará aquí*/}
 
 <button id="boton-func-especiales"
             
@@ -266,6 +267,7 @@ export const Calculadora = ({id="calculadora-contenedor",icons={}})=>{
                 </Boton>
                 <Boton
                 type={'especial resultado'}
+                disabled={resultDisbled}
                 onClick={()=>{
                     controllador.getResult(elements,setElements,setLastElementsInHistorial)
                 }}
