@@ -1,29 +1,4 @@
-:root{
-    --fondo:#DFD0B8;
-    --padding-0:.5vh;
-    --padding-1:1vh;
-    --desktop-width-section:600px;
-    --background-aside:#50494036;
-    --border-radius-0:.5vh;
-    --border-radius-1:1vh;
-    --dbg:rgba(135, 207, 235, 0.326);
-    --white-text-color:#fff6f0;
-    --border-panel-operacion:#948979;
-    --fondo-boton:#948979;
-    --border-boton:#7E7567;
-    --fondo-boton-active:#1534485f;
-    --fondo-boton-operacion:#3C5B6F;
-    --border-boton-operacion:#314A58;
-    --fondo-boton-borrado:#FD5F5F;
-    --border-boton-borrado:#D33838;
-    --fondo-boton-resultado:#159b4b6f;
-    --border-boton-resultado:#0eb60eb3;
-    --fondo-panel-operacion:#B4AFA0;
-    --fondo-item-panel:#92958D;
-    --fondo-item-panel-accion:#D9D9D9;
-    --fondo-item-panel-seleccionado:#E3A953;
-    --border-item-panel-seleccionado:#C19958;
-}
+
 
 
 #pizarron-container{

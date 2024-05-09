@@ -1,4 +1,29 @@
-
+:root{
+    --fondo:#DFD0B8;
+    --padding-0:.5vh;
+    --padding-1:1vh;
+    --desktop-width-section:600px;
+    --background-aside:#50494036;
+    --border-radius-0:.5vh;
+    --border-radius-1:1vh;
+    --dbg:rgba(135, 207, 235, 0.326);
+    --white-text-color:#fff6f0;
+    --border-panel-operacion:#948979;
+    --fondo-boton:#948979;
+    --border-boton:#7E7567;
+    --fondo-boton-active:#1534485f;
+    --fondo-boton-operacion:#3C5B6F;
+    --border-boton-operacion:#314A58;
+    --fondo-boton-borrado:#FD5F5F;
+    --border-boton-borrado:#D33838;
+    --fondo-boton-resultado:#159b4b6f;
+    --border-boton-resultado:#0eb60eb3;
+    --fondo-panel-operacion:#B4AFA0;
+    --fondo-item-panel:#92958D;
+    --fondo-item-panel-accion:#D9D9D9;
+    --fondo-item-panel-seleccionado:#E3A953;
+    --border-item-panel-seleccionado:#C19958;
+}
 #panel-historial{
     max-width: 100%;
     display: flex;
@@ -14,15 +39,15 @@
     height: .3vh;
 }
 
-#panel-historial > .item-panel{
+#panel-historial > .item-panel,.history-item > .item-panel{
     transform: scale(.8);
     height: 80%;
     align-self: self-end;
 }
-#panel-historial > .item-panel > .value{
+#panel-historial > .item-panel > .value,.history-item > .item-panel> .value{
     font-size: 3vh;
 }
-#panel-historial > .item-panel > .accion{
+#panel-historial > .item-panel > .accion,.history-item > .item-panel > .accion{
     width: 2vh;
     height: 2vh;
     padding: 0;
@@ -35,6 +60,7 @@
     bottom: 0;
     left: 0;
     width: 3vh;
+    cursor: pointer;
     background-color: var(--fondo-boton-operacion);
     border: var(--border-radius-0) solid var(--border-boton-operacion);
     border-radius: var(--border-radius-0);
@@ -47,4 +73,47 @@
 #panel-historial-abrir.disabled{
     background-color: #bbb;
     border-color: #aaa;
+}
+
+/* historial completo */
+#historial-completo{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: #fff6e6;
+    border: var(--border-radius-0) solid var(--fondo-item-panel);
+    left: 10%;
+    right: 10%;
+    top: 98%;
+    border-radius: var(--border-radius-1);
+    /* box-shadow: 0 5px 10px var(--fondo-boton-operacion); */
+    z-index: 10;
+    transition: .5s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 0;
+    overflow-y: scroll;
+    gap: 1vh;
+    align-items: flex-end;
+}
+.history-item{
+    max-width: 100%;
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    direction: rtl;
+    overflow-x: scroll;
+}
+#boton-cerrar-history{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    height: 3vh;
+    border-width: .3vh;
+    font-size: 2vh;
+    padding: 0 1%;
+}
+#historial-completo.hidden{
+    height: 0;
 }
