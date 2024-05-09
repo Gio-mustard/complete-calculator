@@ -14,17 +14,19 @@ function App() {
   return (
     <>
       <aside>
-        <button id='block-scroll' onClick={()=>{
+        <button id='block-scroll' onClick={(e)=>{
           const root = document.getElementById('body')
-          console.log(root)
           if (root.style.overflowY === 'hidden'){
             root.style.overflowY = 'scroll';
+            e.target.textContent = "block it";
+
           }
           else{
             root.style.overflowY = 'hidden';
+            e.target.textContent = "blocked";
           }
         }}>
-          block
+          block it
         </button>
         <Pizarron icons={{
           borrador:imgs.iconoBorrador,
