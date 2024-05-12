@@ -19,15 +19,15 @@ const itemPanel = {
     key:7,
     type:"numerico",
     src:"/icono.png"|null,
-    action:'square'||null,
+    action:'exp 2'||null,
     onClick:() => addItem(...)
 
 }
 
-
 const [elements,setElements] =useState([itemPanel])
 
 ```
+-> Mira el archivo 'constantes.js' para ver las actions que existen y como funcionan.
 
 # historial
 Cuando se realiza una operación matemática esta se guarda en el __local storge__ habiendo una clave la cual guarda un array donde cada elemento es una operación que se realizo, cabe mencionar que no se guarda el resultado en el historial, solo se guarda el algoritmo.
