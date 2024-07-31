@@ -13,6 +13,19 @@ import * as imgs from './images';
 function App() {
   return (
     <>
+    <Calculadora
+      id="calculadora-contenedor"
+      icons={{
+        borrar:imgs.iconoBorrar,
+        corona:imgs.iconoCorona,
+        alCuadrado:imgs.iconoAlCuadrado,
+        raizCuadrada:imgs.iconoRaizCuadrada,
+        limpiar:imgs.iconoLimpiar,
+        historial:imgs.iconoHistorial
+      }}
+      >
+
+      </Calculadora>
       <aside>
         <button id='block-scroll' onClick={(e)=>{
           const root = document.getElementById('body')
@@ -35,19 +48,7 @@ function App() {
         }}/>
         </aside>
      
-      <Calculadora
-      id="calculadora-contenedor"
-      icons={{
-        borrar:imgs.iconoBorrar,
-        corona:imgs.iconoCorona,
-        alCuadrado:imgs.iconoAlCuadrado,
-        raizCuadrada:imgs.iconoRaizCuadrada,
-        limpiar:imgs.iconoLimpiar,
-        historial:imgs.iconoHistorial
-      }}
-      >
-
-      </Calculadora>
+      
     </>
   )
 }

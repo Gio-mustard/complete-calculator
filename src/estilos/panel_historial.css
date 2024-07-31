@@ -78,13 +78,12 @@
 /* historial completo */
 #historial-completo{
     position: absolute;
-    width: 80%;
+    width: min(98%,50vh);
     height: 80%;
     background-color: #fff6e6;
     border: var(--border-radius-0) solid var(--fondo-item-panel);
-    left: 10%;
-    right: 10%;
-    top: 98%;
+    left: 1%;
+    top: 1%;
     border-radius: var(--border-radius-1);
     /* box-shadow: 0 5px 10px var(--fondo-boton-operacion); */
     z-index: 10;
@@ -101,6 +100,7 @@
     max-width: 100%;
     width: 100%;
     height: 6vh;
+    min-height: 6vh;
     display: flex;
     direction: rtl;
     overflow-x: scroll;
@@ -116,4 +116,5 @@
 }
 #historial-completo.hidden{
     height: 0;
+    border: 0;
 }
